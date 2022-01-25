@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecruitmentAssignment.DAL",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FCA2D48D-7FDC-4403-B0DF-62235B1650BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAssignment.Tests", "RecruitmentAssignment.Tests\RecruitmentAssignment.Tests.csproj", "{DDA9A374-DC90-4B7A-A3C3-ABF6CAF6232D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAssignment.DAL.SqlLite.Tests", "RecruitmentAssignment.DAL.Tests\RecruitmentAssignment.DAL.SqlLite.Tests.csproj", "{FABCA294-86B6-479A-93EB-D966B466A46F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAssignment.DAL.Tests", "RecruitmentAssignment.DAL.Tests\RecruitmentAssignment.DAL.Tests.csproj", "{FABCA294-86B6-479A-93EB-D966B466A46F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecruitmentAssignment.DAL.SqlLite", "RecruitmentAssignment.DAL.SqlLite\RecruitmentAssignment.DAL.SqlLite.csproj", "{5CAF339F-F678-42A2-8E2B-7782B183BF73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAssignment.DAL.SqlLite", "RecruitmentAssignment.DAL.SqlLite\RecruitmentAssignment.DAL.SqlLite.csproj", "{5CAF339F-F678-42A2-8E2B-7782B183BF73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAssignment.Tests", "Tests\RecruitmentAssignment.Tests\RecruitmentAssignment.Tests.csproj", "{9343D447-D143-4CC7-8CFC-7541F8163C8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{94AFA3AA-AA34-4EF6-B0E6-8D285EE50495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94AFA3AA-AA34-4EF6-B0E6-8D285EE50495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94AFA3AA-AA34-4EF6-B0E6-8D285EE50495}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DDA9A374-DC90-4B7A-A3C3-ABF6CAF6232D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDA9A374-DC90-4B7A-A3C3-ABF6CAF6232D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDA9A374-DC90-4B7A-A3C3-ABF6CAF6232D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDA9A374-DC90-4B7A-A3C3-ABF6CAF6232D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FABCA294-86B6-479A-93EB-D966B466A46F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FABCA294-86B6-479A-93EB-D966B466A46F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FABCA294-86B6-479A-93EB-D966B466A46F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,13 +37,17 @@ Global
 		{5CAF339F-F678-42A2-8E2B-7782B183BF73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CAF339F-F678-42A2-8E2B-7782B183BF73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CAF339F-F678-42A2-8E2B-7782B183BF73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9343D447-D143-4CC7-8CFC-7541F8163C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9343D447-D143-4CC7-8CFC-7541F8163C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9343D447-D143-4CC7-8CFC-7541F8163C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9343D447-D143-4CC7-8CFC-7541F8163C8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{DDA9A374-DC90-4B7A-A3C3-ABF6CAF6232D} = {FCA2D48D-7FDC-4403-B0DF-62235B1650BE}
 		{FABCA294-86B6-479A-93EB-D966B466A46F} = {FCA2D48D-7FDC-4403-B0DF-62235B1650BE}
+		{9343D447-D143-4CC7-8CFC-7541F8163C8D} = {FCA2D48D-7FDC-4403-B0DF-62235B1650BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E44A7530-4CAA-442B-8864-F931179AC02B}

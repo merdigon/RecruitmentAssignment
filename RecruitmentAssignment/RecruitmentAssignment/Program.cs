@@ -18,20 +18,7 @@ namespace RecrutmentAssigment
             //NOT PART OF FINAL SOLUTION
             if (args.Any(p => p.Contains("buildDb")))
             {
-                var inputData = File.ReadAllText("../../sample-data.json");
-                var accountsDto = JsonConvert.DeserializeObject<AccountDto[]>(inputData);
-                var accounts = accountsDto.Select(p => new Account
-                {
-                    Id = p.ApplicationId,
-                    ExternalId = p.Id,
-                    Amount = p.Amount,
-                    ClearedDate = p.ClearedDate,
-                    IsCleared = p.IsCleared,
-                    PostingDate = p.PostingDate,
-                    Summary = Enum.Parse<AccountSummary>(p.Summary),
-                    Type = Enum.Parse<AccountType>(p.Type)
-                }).ToArray();
-                new DatabazeInitializer().Init(accounts);
+                BuildDb();
             }
             else
             {
@@ -46,5 +33,24 @@ namespace RecrutmentAssigment
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        //NOT PART OF FINAL SOLUTION
+        public static void BuildDb()
+        {
+            var inputData = File.ReadAllText("../../sample-data.json");
+            var accountsDto = JsonConvert.DeserializeObject<AccountDto[]>(inputData);
+            var accounts = accountsDto.Select(p => new Account
+            {
+                Id = p.ApplicationId,
+                ExternalId = p.Id,
+                Amount = p.Amount,
+                ClearedDate = p.ClearedDate,
+                IsCleared = p.IsCleared,
+                PostingDate = p.PostingDate,
+                Summary = Enum.Parse<AccountSummary>(p.Summary),
+                Type = Enum.Parse<AccountType>(p.Type)
+            }).ToArray();
+            new DatabazeInitializer().Init(accounts);
+        }
     }
 }

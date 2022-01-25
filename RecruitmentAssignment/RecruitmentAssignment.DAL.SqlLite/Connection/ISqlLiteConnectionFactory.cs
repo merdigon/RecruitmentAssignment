@@ -9,6 +9,6 @@ namespace RecruitmentAssignment.DAL.SqlLite.Connection
 {
     public interface ISqlLiteConnectionFactory
     {
-        SqliteConnection CreateConnection();
+        SqliteConnection Create();
     }
 }

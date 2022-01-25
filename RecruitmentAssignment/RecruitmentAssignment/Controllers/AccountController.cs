@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RecruitmentAssignment.Authentication;
 using RecruitmentAssignment.Models;
 using RecruitmentAssignment.Services;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace RecruitmentAssignment.Controllers
 {
+    [ApiKey]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -21,10 +23,18 @@ namespace RecruitmentAssignment.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AccountDto))]
-        public async Task<ActionResult<IEnumerable<AccountDto>>> Get()
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
+        public async Task<ActionResult<IEnumerable<AccountDto>>> Get([FromQuery] AccountFilterModel filter)
         {
-            var accounts = await _accountService.Get();
-            return Ok(accounts);
+            try
+            {
+                var accounts = await _accountService.Get(filter);
+                return Ok(accounts);
+            }
+            catch (ArgumentException argEx)
+            {
+                return BadRequest(argEx.Message);
+            }
         }
 
         // GET api/<AccountController>/5

@@ -15,7 +15,7 @@ namespace RecruitmentAssignment.DAL.SqlLite.Connection
             _connectionStringBuilder.DataSource = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "accountDb.db"); ;
         }
 
-        public SqliteConnection CreateConnection()
+        public SqliteConnection Create()
         {
             return new SqliteConnection(_connectionStringBuilder.ConnectionString);
         }

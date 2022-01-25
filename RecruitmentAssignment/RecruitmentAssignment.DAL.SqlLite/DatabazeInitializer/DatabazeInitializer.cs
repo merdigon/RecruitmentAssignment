@@ -4,7 +4,6 @@ using RecruitmentAssignment.DAL.SqlLite.Connection;
 using RecruitmentAssignment.DAL.SqlLite.Repositories;
 using System;
 using System.IO;
-using System.Reflection;
 
 namespace RecruitmentAssignment.DAL.SqlLite.DatabazeInitializer
 {

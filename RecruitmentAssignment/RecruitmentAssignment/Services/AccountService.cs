@@ -21,7 +21,7 @@ namespace RecruitmentAssignment.Services
 
         public async Task<int> Create(AccountDto value)
         {
-            Validate(value);
+            ValidateModel(value);
 
             var newAccount = new Account
             {
@@ -44,9 +44,9 @@ namespace RecruitmentAssignment.Services
             return await result;
         }
 
-        public async Task<bool> Edit(int id, AccountDto value)
+        public async Task Edit(int id, AccountDto value)
         {
-            Validate(value);
+            ValidateModel(value);
 
             var newAccount = new Account
             {
@@ -59,7 +59,7 @@ namespace RecruitmentAssignment.Services
                 Type = Enum.Parse<AccountType>(value.Type)
             };
 
-            return await _accountRepository.Edit(id, newAccount);
+            await _accountRepository.Edit(id, newAccount);
         }
 
         public async Task<AccountDto> Get(int id)
@@ -69,9 +69,19 @@ namespace RecruitmentAssignment.Services
             return ConvertToDto(account);
         }
 
-        public async Task<IEnumerable<AccountDto>> Get()
+        public async Task<IEnumerable<AccountDto>> Get(AccountFilterModel filter)
         {
-            var accounts = await _accountRepository.Get();
+            ValidateFilter(filter);
+
+            AccountSummary? accountSummary = string.IsNullOrEmpty(filter.Summary) ? null : Enum.Parse<AccountSummary>(filter.Summary);
+            AccountType? accountType = string.IsNullOrEmpty(filter.Type) ? null : Enum.Parse<AccountType>(filter.Type);
+
+            var accounts = await _accountRepository.GetBy(accountSummary,
+                accountType,
+                filter.Amount,
+                filter.PostingDate,
+                filter.IsCleared,
+                filter.ClearedDate);
 
             return accounts.Select(model => ConvertToDto(model)).ToList();
         }
@@ -94,7 +104,7 @@ namespace RecruitmentAssignment.Services
             };
         }
 
-        public void Validate(AccountDto model)
+        public void ValidateModel(AccountDto model)
         {
             if(model == null)
                 throw new ArgumentException("Object is empty.");
@@ -104,6 +114,15 @@ namespace RecruitmentAssignment.Services
 
             if (!_possibleAccountTypes.Contains(model.Type))
                 throw new ArgumentException($"Invalid value of {nameof(model.Type)}.");
+        }
+
+        private void ValidateFilter(AccountFilterModel filter)
+        {
+            if (!string.IsNullOrEmpty(filter.Summary) && !_possibleAccountSummary.Contains(filter.Summary))
+                throw new ArgumentException($"Invalid value of query parameter {nameof(filter.Summary)}.");
+
+            if (!string.IsNullOrEmpty(filter.Type) && !_possibleAccountTypes.Contains(filter.Type))
+                throw new ArgumentException($"Invalid value of query parameter {nameof(filter.Type)}.");
         }
     }
 }
